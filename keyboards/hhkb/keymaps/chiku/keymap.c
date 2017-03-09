@@ -13,6 +13,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* BASE Level: Default Layer
      * Fn0: Activates HHKB Layer on hold, toggle ARROW layer on
      *      TAPPING_TOGGLE times tap.
+     * MO: Activates HHKB Layer on hold.
      |-------+---+---+---+---+---+---+---+---+---+---+-------+-----+-------+---|
      | Esc   | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | -     | =   | BS    |BS |
      |-------+---+---+---+---+---+---+---+---+---+---+-------+-----+-------+---|
@@ -24,7 +25,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      |-------+---+---+---+---+---+---+---+---+---+---+-------+-----+-------+---|
 
             |------+------+-----------------------+------+------|
-            | Fn0  | LAlt | ******* Space ******* | `    | RGUI |
+            | MO   | LAlt | ******* Space ******* | `    | RGUI |
             |------+------+-----------------------+------+------|
     */
 
