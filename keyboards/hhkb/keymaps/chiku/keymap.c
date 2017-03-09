@@ -66,11 +66,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
       | Pwr  | F1  | F2  | F3  | F4 | F5 | F6 | F7 | F8  | F9  | F10 | F11 | F12   | Ins   | Del |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
-      | CAPS |     |     |     |    |    |    |    | Sh 9| Sh0 | Psc | Pus | Slck  | Backs |     |
+      | CAPS | VoD | VoU | Mut |    |    |    |    | S(9)| S(0)| Psc | Pus | Slck  | Backs |     |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
-      |      | VoD | VoU | Mut |    |    |Lef |Dow | Up  | Rig | Sh =| Sh 8| Enter |       |     |
+      |      | S(1)| S(2)| S(3)|S(4)|S(5)|Lef |Dow | Up  | Rig | S(=)| S(8)| Enter |       |     |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
-      |      | Sh 1| Sh 2| Sh 3|Sh 4|Sh 5|Sh 6|Sh 7|     |     | Sh -|     |       |       |     |
+      |      |     |     |     |    |    |S(6)|S(7)|     |     | S(-)|     |       |       |     |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
 
                  |------+------+----------------------+------+------+
@@ -81,9 +81,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [HHKB] = KEYMAP(
   KC_PWR,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_INS,   KC_DEL, \
-  KC_CAPS,  KC_VOLD,  KC_VOLU,  KC_MUTE,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_LPRN,  KC_RPRN,  KC_PSCR,  KC_SLCK,  KC_PAUS,  KC_BSPC,          \
-  KC_TRNS,  KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_ASTR,  KC_PLUS,  KC_PENT,                    \
-  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_CIRC,  KC_AMPR,  KC_TRNS,  KC_TRNS,  KC_UNDS,  KC_TRNS,  KC_TRNS,                    \
+  KC_CAPS,  KC_VOLD,  KC_VOLU,  KC_MUTE,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  S(KC_9),  S(KC_0),  KC_PSCR,  KC_SLCK,  KC_PAUS,  KC_BSPC,          \
+  KC_TRNS,  S(KC_1),  S(KC_2),  S(KC_3),  S(KC_4),  S(KC_5),  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  S(KC_EQL),  S(KC_8),  KC_PENT,                  \
+  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  S(KC_6),  S(KC_7),  KC_TRNS,  KC_TRNS,  S(KC_MINS), KC_TRNS,  KC_TRNS,                  \
                      KC_TRNS, KC_TRNS,           KC_TRNS,                KC_TRNS, KC_TRNS)};
 
 
@@ -105,40 +105,3 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
             break;
     }
 }
-
-// This macro is said to be *careless* because it does not care of
-// simultaneous use with other keys. The Left Shift key is kept
-// registered during the key is pressed. There are several phenomenon
-// observed which might be not expected or not predicted.
-// The keycode argument must be 8 bit. See he defintion of register_code
-// and unregister_code.
-#define CARELESS_SHIFT(keycode) case keycode:\
-    if(record->event.pressed) {\
-        register_code(KC_LSFT);\
-        register_code(keycode);\
-    }else {\
-        unregister_code(keycode);\
-        unregister_code(KC_LSFT);\
-    }\
-break;
-
-const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
-{
-      switch(id) {
-          CARELESS_SHIFT(KC_1);
-          CARELESS_SHIFT(KC_2);
-          CARELESS_SHIFT(KC_3);
-          CARELESS_SHIFT(KC_4);
-          CARELESS_SHIFT(KC_5);
-          CARELESS_SHIFT(KC_6);
-          CARELESS_SHIFT(KC_7);
-          CARELESS_SHIFT(KC_8);
-          CARELESS_SHIFT(KC_9);
-          CARELESS_SHIFT(KC_0);
-          CARELESS_SHIFT(KC_MINS);
-          CARELESS_SHIFT(KC_EQL);
-          CARELESS_SHIFT(KC_BSLS);
-          CARELESS_SHIFT(KC_GRV);
-      }
-    return MACRO_NONE;
-};
