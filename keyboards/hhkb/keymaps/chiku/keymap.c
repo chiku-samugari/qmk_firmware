@@ -66,11 +66,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
       | Pwr  | F1  | F2  | F3  | F4 | F5 | F6 | F7 | F8  | F9  | F10 | F11 | F12   | Ins   | Del |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
-      | CAPS | VoD | VoU | Mut |    |    |    |    | S(9)| S(0)| Psc | Pus | Slck  | Backs |     |
+      | CAPS | VoD | VoU | Mut |    |    |    |    |  (  |  )  | Psc | Pus | Slck  | Backs |     |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
-      |      | S(1)| S(2)| S(3)|S(4)|S(5)|Lef |Dow | Up  | Rig | S(=)| S(8)| Enter |       |     |
+      |      |  !  |  @  |  #  | $  | %  |Lef |Dow | Up  | Rig |  +  |  *  | Enter |       |     |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
-      |      |     |     |     |    |    |S(6)|S(7)|     |     | S(-)|     |       |       |     |
+      |      |     |     |     |    |    | ^  | &  |     |     |  _  |     |       |       |     |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
 
                  |------+------+----------------------+------+------+
@@ -81,9 +81,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [HHKB] = KEYMAP(
   KC_PWR,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_INS,   KC_DEL, \
-  KC_CAPS,  KC_VOLD,  KC_VOLU,  KC_MUTE,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  S(KC_9),  S(KC_0),  KC_PSCR,  KC_SLCK,  KC_PAUS,  KC_BSPC,          \
-  KC_TRNS,  S(KC_1),  S(KC_2),  S(KC_3),  S(KC_4),  S(KC_5),  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  S(KC_EQL),  S(KC_8),  KC_PENT,                  \
-  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  S(KC_6),  S(KC_7),  KC_TRNS,  KC_TRNS,  S(KC_MINS), KC_TRNS,  KC_TRNS,                  \
+  KC_CAPS,  KC_VOLD,  KC_VOLU,  KC_MUTE,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_LPRN,  KC_RPRN,  KC_PSCR,  KC_SLCK,  KC_PAUS,  KC_BSPC,          \
+  KC_TRNS,  KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_ASTR,  KC_PLUS,  KC_PENT,                    \
+  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_CIRC,  KC_AMPR,  KC_TRNS,  KC_TRNS,  KC_UNDS,  KC_TRNS,  KC_TRNS,                    \
                      KC_TRNS, KC_TRNS,           KC_TRNS,                KC_TRNS, KC_TRNS)};
 
 
