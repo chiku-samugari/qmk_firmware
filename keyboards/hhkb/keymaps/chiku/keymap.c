@@ -9,7 +9,7 @@ enum layer_ids {
     US_ON_JIS,
     SHIFT_US_ON_JIS,
     ARROW,
-    HHKB,
+    SYMB_AND_FN,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -122,7 +122,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_DOWN, KC_TRNS, KC_TRNS,                   \
                      KC_TRNS, KC_TRNS,           KC_TRNS,                KC_TRNS, KC_TRNS),
 
-    /* Layer HHKB: HHKB mode (HHKB Fn)
+    /* Layer Symbol and Function: Extended version of HHKB Fn layer.
+     *  + Function keys
+     *  + Volume Down, Volume Up, Mute
+     *  + Print Screen, Pause, Scroll lock, Insert
+     *  + Symbols on number keys are located on more easy-to-type keys
+     *  + Cursor keys on HJKL
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
       | Pwr  | F1  | F2  | F3  | F4 | F5 | F6 | F7 | F8  | F9  | F10 | F11 | F12   | Ins   | Del |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
@@ -139,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
      */
 
-  [HHKB] = KEYMAP(
+  [SYMB_AND_FN] = KEYMAP(
   KC_PWR,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_INS,   KC_DEL, \
   KC_CAPS,  KC_VOLD,  KC_VOLU,  KC_MUTE,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_LPRN,  KC_RPRN,  KC_PSCR,  KC_SLCK,  KC_PAUS,  KC_BSPC,          \
   KC_TRNS,  KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_ASTR,  KC_PLUS,  KC_PENT,                    \
