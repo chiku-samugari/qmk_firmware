@@ -15,10 +15,10 @@ enum layer_ids {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* BASE Level: Default Layer
-     * Fn0: Activates HHKB Layer on hold, toggles ARROW layer on
+     * Fn0: Activates SYMB_AND_FN Layer on hold, toggles ARROW layer on
      *      TAPPING_TOGGLE times tap.
-     * Fn1: Activates HHKB Layer on hold, toggles US_ON_JIS layer on
-     *      TAPPING_TOGGLE times tap.
+     * Fn1: Activates SYMB_AND_FN Layer on hold, toggles US_ON_JIS layer
+     *      on TAPPING_TOGGLE times tap.
      |-------+---+---+---+---+---+---+---+---+---+---+-------+-----+-------+---|
      | Esc   | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | -     | =   | BS    |BS |
      |-------+---+---+---+---+---+---+---+---+---+---+-------+-----+-------+---|
@@ -152,38 +152,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                      KC_TRNS, KC_TRNS,           KC_TRNS,                KC_TRNS, KC_TRNS)};
 
 
+enum fn_action_ids {
+    TT_HHKB_ARROW = 0,
+    TT_HHKB_US_ON_JIS,
+    MOMENTARY_LAYER_AND_SHIFT,
+    UNSHIFT,
+};
+
 const uint16_t PROGMEM fn_actions[] = {
-    [0] = ACTION_FUNCTION_TAP(0),
-    [1] = ACTION_FUNCTION_TAP(1),
-    [2] = ACTION_FUNCTION(2),
-    [3] = ACTION_FUNCTION(3),
+    [0] = ACTION_FUNCTION_TAP(TT_HHKB_ARROW),
+    [1] = ACTION_FUNCTION_TAP(TT_HHKB_US_ON_JIS),
+    [2] = ACTION_FUNCTION(MOMENTARY_LAYER_AND_SHIFT),
+    [3] = ACTION_FUNCTION(UNSHIFT),
 };
 
 static uint8_t unshift_count = 0;
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
     switch(id) {
-        case 0:
+        case TT_HHKB_ARROW:
             if(record->event.pressed) {
-                layer_on(HHKB);
+                layer_on(SYMB_AND_FN);
             }else {
-                layer_off(HHKB);
+                layer_off(SYMB_AND_FN);
                 if(record->tap.count == TAPPING_TOGGLE) {
                     layer_invert(ARROW);
                 }
             }
             break;
-        case 1:
+        case TT_HHKB_US_ON_JIS:
             if(record->event.pressed) {
-                layer_on(HHKB);
+                layer_on(SYMB_AND_FN);
             }else {
-                layer_off(HHKB);
+                layer_off(SYMB_AND_FN);
                 if(record->tap.count == TAPPING_TOGGLE) {
                     layer_invert(US_ON_JIS);
                 }
             }
             break;
-        case 2:
+        case MOMENTARY_LAYER_AND_SHIFT:
             unshift_count = 0;
             if(record->event.pressed) {
                 register_mods(MOD_LSFT);
@@ -193,7 +200,7 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
                 layer_off(SHIFT_US_ON_JIS);
             }
             break;
-        case 3:
+        case UNSHIFT:
             if(record->event.pressed) {
                 unregister_mods(MOD_LSFT);
                 unshift_count += 1;
