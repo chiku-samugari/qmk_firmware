@@ -72,13 +72,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * modified by the left shift when the keyboard is recognized as a
      * JIS keyboard.
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
-      |      |     | [   |     |    |    | =  |S(6)| S(')| S(8)| S(9)|S(RO)| S(;)  |       |S(=) |
+      |      | S(1)| [   | S(3)|S(4)|S(5)| =  |S(6)| S(')| S(8)| S(9)|S(RO)| S(;)  | S(YEN)|S(=) |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
-      |      |     |     |     |    |    |    |    |     |     |     |     |       |       |     |
+      |      | S(Q)| S(W)| S(E)|S(R)|S(T)|S(Y)|S(U)| S(I)| S(O)| S(P)| S([)| S(\)  |       |     |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
-      |      |     |     |     |    |    |    |    |     |     | '   | S(2)|       |       |     |
+      |      | S(A)| S(S)| S(D)|S(F)|S(G)|S(H)|S(J)| S(K)| S(L)| '   | S(2)|       |       |     |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
-      |      |     |     |     |    |    |    |    |     |     |     |     |       |       |     |
+      |      | S(Z)| S(X)| S(C)|S(V)|S(B)|S(N)|S(M)| S(,)| S(.)| S(/)|     |       |       |     |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
 
                  |------+------+----------------------+------+------+
@@ -88,10 +88,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
   [SHIFT_US_ON_JIS] = KEYMAP( \
-  KC_TRNS, KC_TRNS, KC_FN3, KC_TRNS, KC_TRNS, KC_TRNS, KC_FN3,  S(KC_6), S(KC_QUOT), S(KC_8), S(KC_9), S(KC_RO), S(KC_SCLN), KC_TRNS, S(KC_EQL), \
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS,          \
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_FN3, S(KC_2), KC_TRNS,                   \
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                   \
+  KC_TRNS, S(KC_1), KC_FN3, S(KC_3), S(KC_4), S(KC_5), KC_FN3,  S(KC_6), S(KC_QUOT), S(KC_8), S(KC_9), S(KC_RO), S(KC_SCLN), S(KC_JYEN), S(KC_EQL), \
+  KC_TRNS, S(KC_Q), S(KC_W), S(KC_E), S(KC_R), S(KC_T), S(KC_Y), S(KC_U), S(KC_I), S(KC_O), S(KC_P), S(KC_RBRC), S(KC_BSLS), KC_TRNS,          \
+  KC_TRNS, S(KC_A), S(KC_S), S(KC_D), S(KC_F), S(KC_G), S(KC_H), S(KC_J), S(KC_K), S(KC_L), KC_FN3, S(KC_2), KC_TRNS,                   \
+  KC_TRNS, S(KC_Z), S(KC_X), S(KC_C), S(KC_V), S(KC_B), S(KC_N), S(KC_M), S(KC_COMM), S(KC_DOT), S(KC_SLSH), KC_TRNS, KC_TRNS,                   \
                      KC_TRNS, KC_TRNS,           KC_TRNS,                KC_TRNS, KC_TRNS),
 
 
