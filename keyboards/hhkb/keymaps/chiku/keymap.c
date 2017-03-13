@@ -4,11 +4,13 @@
 #include "hhkb.h"
 #include "config.h"
 
-#define BASE 0
-#define US_ON_JIS 1
-#define SHIFT_US_ON_JIS 2
-#define ARROW 3
-#define HHKB 4
+enum layer_ids {
+    BASE = 0,
+    US_ON_JIS,
+    SHIFT_US_ON_JIS,
+    ARROW,
+    HHKB,
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
