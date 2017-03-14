@@ -197,29 +197,29 @@ const uint16_t PROGMEM fn_actions[] = {
     [3] = ACTION_FUNCTION(UNSHIFT),
 };
 
+typedef uint8_t Layer;
+
+// Momentary swtich to layer ``hold'', toggles layer ``tap'' on tap.
+void layer_tap_toggle_ab(const keyrecord_t * const record, Layer hold, Layer tap) {
+    if(record->event.pressed) {
+        layer_on(hold);
+    }else {
+        layer_off(hold);
+        if(record->tap.count == TAPPING_TOGGLE) {
+            layer_invert(tap);
+        }
+    }
+}
+
 static uint8_t unshift_count = 0;
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
     switch(id) {
         case TT_HHKB_ARROW:
-            if(record->event.pressed) {
-                layer_on(SYMB_AND_FN);
-            }else {
-                layer_off(SYMB_AND_FN);
-                if(record->tap.count == TAPPING_TOGGLE) {
-                    layer_invert(ARROW);
-                }
-            }
+            layer_tap_toggle_ab(record, SYMB_AND_FN, ARROW);
             break;
         case TT_HHKB_US_ON_JIS:
-            if(record->event.pressed) {
-                layer_on(SYMB_AND_FN);
-            }else {
-                layer_off(SYMB_AND_FN);
-                if(record->tap.count == TAPPING_TOGGLE) {
-                    layer_invert(US_ON_JIS);
-                }
-            }
+            layer_tap_toggle_ab(record, SYMB_AND_FN, US_ON_JIS);
             break;
         case MOMENTARY_LAYER_AND_SHIFT:
             unshift_count = 0;
