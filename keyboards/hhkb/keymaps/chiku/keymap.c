@@ -15,7 +15,7 @@ enum layer_ids {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-    /* BASE Level: Default Layer
+    /* Layer BASE: Default Layer
      * Fn0: Activates SYMB_AND_FN Layer on hold, toggles ARROW layer on
      *      TAPPING_TOGGLE times tap.
      * Fn1: Activates SYMB_AND_FN Layer on hold, toggles US_ON_JIS layer
@@ -35,16 +35,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             |------+------+-----------------------+------+------|
     */
 
-  [BASE] = KEYMAP(  //  default layer
-  KC_ESC,   KC_1,  KC_2,  KC_3,  KC_4,  KC_5,  KC_6,  KC_7,  KC_8,     KC_9,    KC_0,     KC_MINS,  KC_EQL,    KC_BSPC, KC_BSPC, \
-  KC_TAB,   KC_Q,  KC_W,  KC_E,  KC_R,  KC_T,  KC_Y,  KC_U,  KC_I,     KC_O,    KC_P,     KC_LBRC,  KC_RBRC,   KC_BSLS,          \
+  [BASE] = KEYMAP(
+  KC_ESC,   KC_1,  KC_2,  KC_3,  KC_4,  KC_5,  KC_6,  KC_7,  KC_8,     KC_9,    KC_0,     KC_MINS,  KC_EQL,   KC_BSPC,  KC_BSPC, \
+  KC_TAB,   KC_Q,  KC_W,  KC_E,  KC_R,  KC_T,  KC_Y,  KC_U,  KC_I,     KC_O,    KC_P,     KC_LBRC,  KC_RBRC,  KC_BSLS,           \
   KC_LCTL,  KC_A,  KC_S,  KC_D,  KC_F,  KC_G,  KC_H,  KC_J,  KC_K,     KC_L,    KC_SCLN,  KC_QUOT,  KC_ENT,                      \
   KC_LSFT,  KC_Z,  KC_X,  KC_C,  KC_V,  KC_B,  KC_N,  KC_M,  KC_COMM,  KC_DOT,  KC_SLSH,  KC_RSFT,  KC_FN1,                      \
-                    KC_FN0,  KC_LALT,    /*        */ KC_SPC,      KC_GRV,   KC_RGUI),
+                    KC_FN0,  KC_LALT,      KC_SPC,      KC_GRV,   KC_RGUI),
 
 
     /* Layer US_ON_JIS : The layer behaves as an US keyboard when the
-     * keyboard is recognized as a JIS keyboard.
+     *                   keyboard is recognized as a JIS keyboard. Since
+     *                   this layer is not for me, the layout is HHKB
+     *                   Pro 2 original layout with DIP 3,4, and 5 are
+     *                   on.
      * Fn2: register/unregister shift modifier and on/off
      *      SHIFT_US_ON_JIS layer.
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
@@ -58,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
 
                  |------+------+----------------------+------+------+
-                 | **** | **** | ******************** | **** | **** |
+                 | **** | **** | ******************** | RAlt | **** |
                  |------+------+----------------------+------+------+
 
      */
@@ -71,9 +74,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                      KC_TRNS, KC_TRNS,           KC_TRNS,                KC_TRNS, KC_TRNS),
 
 
-    /* Layer SHIFT_US_ON_JIS : The layer behaves as an US keyboard
-     * modified by the left shift when the keyboard is recognized as a
-     * JIS keyboard.
+    /* Layer SHIFT_US_ON_JIS: The layer behaves as an US keyboard
+     *                        modified by the left shift when the
+     *                        keyboard is recognized as a JIS keyboard.
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
       |      | S(1)| [   | S(3)|S(4)|S(5)| =  |S(6)| S(')| S(8)| S(9)|S(RO)| S(;)  | S(YEN)|S(=) |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
@@ -98,8 +101,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                      KC_TRNS, KC_TRNS,           KC_TRNS,                KC_TRNS, KC_TRNS),
 
 
-    /* Layer Arrow : Arrow mode. Both HJKL and HHKB original diamond
-     *               cursor are available.
+    /* Layer Arrow: Arrow mode. Both HJKL and HHKB original diamond
+     *              cursor are available.
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
       |      |     |     |     |    |    |    |    |     |     |     |     |       |       |     |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
@@ -123,7 +126,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_DOWN, KC_TRNS, KC_TRNS,                   \
                      KC_TRNS, KC_TRNS,           KC_TRNS,                KC_TRNS, KC_TRNS),
 
+
     /* Layer Symbol and Function: Extended version of HHKB Fn layer.
+     *
      *  + Function keys
      *  + Volume Down, Volume Up, Mute
      *  + Print Screen, Pause, Scroll lock, Insert
