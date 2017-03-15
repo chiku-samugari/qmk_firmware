@@ -132,7 +132,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *
      *  + Function keys
      *  + Volume Down, Volume Up, Mute
-     *  + Print Screen, Pause, Scroll lock, Insert
+     *  + Power, Print Screen, Pause, Scroll lock, Insert
      *  + Symbols on number keys are located on more easy-to-type keys
      *  + Cursor keys on HJKL
      *
@@ -140,7 +140,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
       | Pwr  | F1  | F2  | F3  | F4 | F5 | F6 | F7 | F8  | F9  | F10 | F11 | F12   | Ins   | Del |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
-      | CAPS | VoD | VoU | Mut |    |TG_M|    |    |  (  |  )  | Psc | Pus | Slck  | Backs |     |
+      | CAPS | VoD | VoU | Mut |    |TG_M|    |    |  (  |  )  | Pscr| Slck | Paus | Backs |     |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
       |      |  !  |  @  |  #  | $  | %  |Lef |Dow | Up  | Rig |  +  |  *  | Enter |       |     |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
