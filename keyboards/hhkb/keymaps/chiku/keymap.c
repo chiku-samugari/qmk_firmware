@@ -263,36 +263,37 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
             break;
         case UNSHIFT:
             if(record->event.pressed) {
-                unregister_mods(MOD_LSFT);
+                del_mods(MOD_LSFT);
                 unshift_count += 1;
-                switch(keymap_key_to_keycode(BASE, record->event.key)) {
+                switch(keymap_key_to_keycode(REFERENCE, record->event.key)) {
                     case KC_2:      // @
-                        register_code(KC_LBRC);
+                        add_key(KC_LBRC);
                         break;
                     case KC_6:      // ^
-                        register_code(KC_EQL);
+                        add_key(KC_EQL);
                         break;
                     case KC_SCLN:   // :
-                        register_code(KC_QUOT);
+                        add_key(KC_QUOT);
                         break;
                 }
             } else {
                 unshift_count -= 1;
-                switch(keymap_key_to_keycode(BASE, record->event.key)) {
+                switch(keymap_key_to_keycode(REFERENCE, record->event.key)) {
                     case KC_2:
-                        unregister_code(KC_LBRC);
+                        del_key(KC_LBRC);
                         break;
                     case KC_6:
-                        unregister_code(KC_EQL);
+                        del_key(KC_EQL);
                         break;
                     case KC_SCLN:
-                        unregister_code(KC_QUOT);
+                        del_key(KC_QUOT);
                         break;
                 }
                 if(unshift_count == 0) {
-                   register_mods(MOD_LSFT);
+                    add_mods(MOD_LSFT);
                 }
             }
+            send_keyboard_report();
             break;
     }
 }
