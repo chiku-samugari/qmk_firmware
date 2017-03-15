@@ -3,9 +3,13 @@
  */
 #include "hhkb.h"
 #include "config.h"
+#include "debug.h"
 
 enum layer_ids {
     BASE = 0,
+    MOD_US,
+    MOD_US_ON_JIS,
+    SHIFT_MOD_US_ON_JIS,
     US_ON_JIS,
     SHIFT_US_ON_JIS,
     ARROW,
@@ -42,6 +46,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LCTL,  KC_A,  KC_S,  KC_D,  KC_F,  KC_G,  KC_H,  KC_J,  KC_K,     KC_L,    KC_SCLN,  KC_QUOT,  KC_ENT,                      \
   KC_LSFT,  KC_Z,  KC_X,  KC_C,  KC_V,  KC_B,  KC_N,  KC_M,  KC_COMM,  KC_DOT,  KC_SLSH,  KC_RSFT,  KC_FN1,                      \
                     KC_FN0,  KC_LALT,      KC_SPC,      KC_GRV,   KC_RGUI),
+
+    /* Layer MOD_US: LShift + Semicolon issues KC_QUOTE, Quote issues
+     *               LShift and Semicolon. My favorite setup and I
+     *               normally achieve it by xmodmap.
+    */
+
+  [MOD_US] = KEYMAP(
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          \
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_FN4,  KC_FN4,  KC_TRNS,                   \
+  KC_FN4,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                   \
+                    KC_TRNS,  KC_TRNS,      KC_TRNS,      KC_TRNS,   KC_TRNS),
 
 
     /* Layer US_ON_JIS : The layer behaves as an US keyboard when the
@@ -136,7 +152,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *  + Symbols on number keys are located on more easy-to-type keys
      *  + Cursor keys on HJKL
      *
-     * TG_M is TG(MOUSE)
+     * TG_M denotes TG(MOUSE), TG_U denotes TG(MOD_US)
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
       | Pwr  | F1  | F2  | F3  | F4 | F5 | F6 | F7 | F8  | F9  | F10 | F11 | F12   | Ins   | Del |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
@@ -144,7 +160,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
       |      |  !  |  @  |  #  | $  | %  |Lef |Dow | Up  | Rig |  +  |  *  | Enter |       |     |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
-      |      |     |     |     |    |    | ^  | &  |     |     |  _  |     |       |       |     |
+      |      | TG_U|     |     |    |    | ^  | &  |     |     |  _  |     |       |       |     |
       |------+-----+-----+-----+----+----+----+----+-----+-----+-----+-----+-------+-------+-----|
 
                  |------+------+----------------------+------+------+
@@ -157,7 +173,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_PWR,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,   KC_F12,   KC_INS,   KC_DEL, \
   KC_CAPS,  KC_VOLD,  KC_VOLU,  KC_MUTE,  KC_TRNS, TG(MOUSE), KC_TRNS,  KC_TRNS,  KC_LPRN,  KC_RPRN,  KC_PSCR,  KC_SLCK,  KC_PAUS,  KC_BSPC,          \
   KC_TRNS,  KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_ASTR,  KC_PLUS,  KC_PENT,                    \
-  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_CIRC,  KC_AMPR,  KC_TRNS,  KC_TRNS,  KC_UNDS,  KC_TRNS,  KC_TRNS,                    \
+  KC_TRNS,TG(MOD_US), KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_CIRC,  KC_AMPR,  KC_TRNS,  KC_TRNS,  KC_UNDS,  KC_TRNS,  KC_TRNS,                    \
                      KC_TRNS, KC_TRNS,           KC_TRNS,                KC_TRNS, KC_TRNS),
 
 
@@ -218,13 +234,16 @@ enum fn_action_ids {
     TT_HHKB_US_ON_JIS,
     MOMENTARY_LAYER_AND_SHIFT,
     UNSHIFT,
+    FIXED_RIGHT_PINKY,
 };
 
 const uint16_t PROGMEM fn_actions[] = {
     [0] = ACTION_FUNCTION_TAP(TT_HHKB_ARROW),
     [1] = ACTION_FUNCTION_TAP(TT_HHKB_US_ON_JIS),
-    [2] = ACTION_FUNCTION(MOMENTARY_LAYER_AND_SHIFT),
+    [2] = ACTION_FUNCTION_OPT(MOMENTARY_LAYER_AND_SHIFT, SHIFT_US_ON_JIS),
     [3] = ACTION_FUNCTION(UNSHIFT),
+    [4] = ACTION_FUNCTION(FIXED_RIGHT_PINKY),
+    [5] = ACTION_FUNCTION_OPT(MOMENTARY_LAYER_AND_SHIFT, SHIFT_MOD_US_ON_JIS),
 };
 
 typedef uint8_t Layer;
@@ -241,10 +260,69 @@ void layer_tap_toggle_ab(const keyrecord_t * const record, Layer hold, Layer tap
     }
 }
 
+static bool lshift = false;
+static uint8_t semicolon = 0;
+static uint8_t quote = 0;
+
+void mod_us(const keyrecord_t * const record, uint8_t keycode) {
+    switch(keycode) {
+        case KC_LSFT:
+            if(record->event.pressed) {
+                register_mods(MOD_LSFT);
+                lshift = true;
+            }else {
+                unregister_mods(MOD_LSFT);
+                lshift = false;
+            }
+            break;
+        case KC_SCLN:
+            if(record->event.pressed) {
+                if(lshift) {
+                    del_mods(MOD_LSFT);
+                    add_key(KC_QUOT);
+                    semicolon = KC_QUOT;
+                }else {
+                    add_key(KC_SCLN);
+                    semicolon = KC_SCLN;
+                }
+            }else {
+                del_key(semicolon);
+                if(lshift) {
+                    add_mods(MOD_LSFT);
+                }
+                semicolon = 0;
+            }
+            send_keyboard_report();
+            break;
+        case KC_QUOT:
+            if(record->event.pressed) {
+                if(lshift) {
+                    add_key(KC_QUOT);
+                    quote = KC_QUOT;
+                }else {
+                    add_mods(MOD_LSFT);
+                    add_key(KC_SCLN);
+                    quote = KC_SCLN;
+                }
+            }else {
+                del_key(quote);
+                if(!lshift) {
+                    del_mods(MOD_LSFT);
+                }
+                quote = 0;
+            }
+            send_keyboard_report();
+            break;
+    }
+}
+
 static uint8_t unshift_count = 0;
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
     switch(id) {
+        case FIXED_RIGHT_PINKY:
+            mod_us(record, keymap_key_to_keycode(REFERENCE, record->event.key));
+            break;
         case TT_HHKB_ARROW:
             layer_tap_toggle_ab(record, SYMB_AND_FN, ARROW);
             break;
@@ -254,11 +332,11 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
         case MOMENTARY_LAYER_AND_SHIFT:
             unshift_count = 0;
             if(record->event.pressed) {
+                layer_on(opt);
                 register_mods(MOD_LSFT);
-                layer_on(SHIFT_US_ON_JIS);
             }else {
                 unregister_mods(MOD_LSFT);
-                layer_off(SHIFT_US_ON_JIS);
+                layer_off(opt);
             }
             break;
         case UNSHIFT:
