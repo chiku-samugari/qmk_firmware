@@ -176,19 +176,17 @@ void process_action(keyrecord_t *record, action_t action)
                         } else {
                             add_weak_mods(mods);
                         }
-                        send_keyboard_report();
                     }
                     register_code(action.key.code);
                 } else {
-                    unregister_code(action.key.code);
                     if (mods) {
                         if (IS_MOD(action.key.code) || action.key.code == KC_NO) {
                             del_mods(mods);
                         } else {
                             del_weak_mods(mods);
                         }
-                        send_keyboard_report();
                     }
+                    unregister_code(action.key.code);
                 }
             }
             break;
