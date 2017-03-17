@@ -88,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_RBRC, KC_BSLS, KC_BSPC,          \
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, S(KC_7), KC_TRNS,                   \
   KC_FN2,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                   \
-                     KC_TRNS, KC_TRNS,           KC_TRNS,                KC_TRNS, KC_TRNS),
+                     KC_TRNS, KC_TRNS,           KC_TRNS,                KC_RALT, KC_TRNS),
 
 
     /* Layer SHIFT_US_ON_JIS: The layer behaves as an US keyboard
