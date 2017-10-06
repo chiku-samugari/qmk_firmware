@@ -1,4 +1,5 @@
 #include "hhkb.h"
+#include "config.h"
 
 #define _______ KC_TRNS
 
@@ -14,6 +15,10 @@ enum layer_ids {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Layer BASE: Default Layer
+     *
+     * Fn0: Activates AUXILIARY Layer on hold, toggles AUXILIARY layer
+     *      on TAPPING_TOGGLE times tap.
+     *
      * ,-----------------------------------------------------------.
      * |Esc|  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|Yen|Bsp|
      * |-----------------------------------------------------------|
@@ -23,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |-----------------------------------------------------------|
      * |Shft   |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|  \| Up|Sft|
      * |-----------------------------------------------------------|
-     * |   ||Ctl|Alt|Cmd|   |   Spc   |Bsp|   |   |   ||Lft|Dwn|Rgh|
+     * |   ||Fn0|Alt|Cmd|   |   Spc   |Bsp|   |   |   ||Lft|Dwn|Rgh|
      * `-----------------------------------------------------------'
      */
 
@@ -32,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,    KC_Y,    KC_U,     KC_I,    KC_O,    KC_P, KC_LBRC, KC_RBRC,
     KC_LCTL,  KC_A,    KC_S,    KC_D,    KC_F,     KC_G,    KC_H,    KC_J,     KC_K,    KC_L, KC_SCLN, KC_QUOT, KC_BSLS, KC_ENT,
     KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,     KC_B,    KC_N,    KC_M,  KC_COMM,  KC_DOT, KC_SLSH,   KC_RO,   KC_UP, KC_RSFT,
-    MO(1), KC_ZKHK, KC_LGUI, KC_LALT, KC_MHEN,         KC_SPC,    KC_HENK,  KC_KANA, KC_RALT,   MO(1), KC_LEFT, KC_DOWN, KC_RGHT
+    _______,KC_FN0, KC_LGUI, KC_LALT, KC_MHEN,         KC_SPC,    KC_HENK,  KC_KANA, KC_RALT,  KC_FN0, KC_LEFT, KC_DOWN, KC_RGHT
   ),
 
   /* Layer Auxiliary: Extended version of HHKB Fn layer.
@@ -69,6 +74,30 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t macro_id, uint8_t o
   return MACRO_NONE;
 }
 
-const uint16_t PROGMEM fn_actions[] = {
-
+enum fn_action_ids {
+    HOLD_AUXILIARY_TAP_AUXILIARY = 0,
 };
+
+const uint16_t PROGMEM fn_actions[] = {
+    [0] = ACTION_FUNCTION_TAP(HOLD_AUXILIARY_TAP_AUXILIARY),
+};
+
+// Momentary swtich to layer ``hold'', toggles layer ``tap'' on tap.
+void layer_tap_toggle_ab(const keyrecord_t * const record, Layer hold, Layer tap) {
+    if(record->event.pressed) {
+        layer_on(hold);
+    }else {
+        layer_off(hold);
+        if(record->tap.count == TAPPING_TOGGLE) {
+            layer_invert(tap);
+        }
+    }
+}
+
+void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
+    switch(id) {
+        case HOLD_AUXILIARY_TAP_AUXILIARY:
+            layer_tap_toggle_ab(record, AUXILIARY, AUXILIARY);
+            break;
+    }
+}
