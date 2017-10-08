@@ -9,6 +9,8 @@ enum layer_ids {
     BASE = 0,
     SELECTOR,
     FIXED_RIGHT_PINKY_ON_ASCII,
+    FIXED_RIGHT_PINKY_ON_JIS,
+    SHIFT_FIXED_RIGHT_PINKY_ON_JIS,
     AUXILIARY,
     MOUSE,
     REFERENCE,
@@ -78,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
 
   [SELECTOR] = KEYMAP_JP(
-    _______,  KC_FN6,  KC_FN7, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______,  KC_FN6,  KC_FN7, _______, _______, _______, _______, _______, _______, _______,  KC_FN8, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
@@ -113,6 +115,52 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_FN4, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
        _______, _______, _______, _______, _______,     _______     , _______, _______, _______, _______, _______, _______, _______
        ),
+
+  /* Layer FIXED_RIGHT_PINKY_ON_JIS:
+   *   The layer behaves as a right pinky fixed US keyboard when the
+   *   keyboard is recognized as a JIS keyboard. Since this layer is for
+   *   me, the position of Backslash key, Grave key, Equal key, and
+   *   Backspace key are changed.
+   *
+   * Fn5: Shift emulating key. It registers Left Shift bit on press,
+   * unregisters the bit on release. Simultaneously,
+   * SHIFT_FIXED_RIGHT_PINKY_ON_JIS layer is activated on press, and
+   * deactivated on release.
+   *
+   * ,--------------------------------------------------------------------------.
+   * |    |    |    |    |    |    |    |    |    |    |    |    |BSpc|BSpc|BSpc|
+   * |--------------------------------------------------------------------------|
+   * |      |    |    |    |    |    |    |    |    |    |    |  ] |  \ |       |
+   * |------------------------------------------------------------------\       |
+   * |       |    |    |    |    |    |    |    |    |    |    |    |    |      |
+   * |--------------------------------------------------------------------------|
+   * |  Fn5   |    |    |    |    |    |    |    |    |    |    | Yen |    |    |
+   * |--------------------------------------------------------------------------|
+   * |    | |    |    |    |S(-)|          |S([)|    |    |    | |    |    |    |
+   * `--------------------------------------------------------------------------'
+   */
+
+  [FIXED_RIGHT_PINKY_ON_JIS] = KEYMAP_JP(
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_RBRC, KC_BSLS,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+     KC_FN5, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_JYEN, _______, _______,
+    _______, _______, _______, _______,S(KC_MINS),   _______   ,S(KC_LBRC), _______, _______, _______, _______, _______, _______
+  ),
+
+  /* Layer SHIFT_FIXED_RIGHT_PINKY_ON_JIS:
+   *   The layer behaves as a right pinky fixed US layout keyboard whose
+   *   left shift key is held when the keyboard is recognized as a JIS
+   *   keyboard.
+   */
+
+     [SHIFT_FIXED_RIGHT_PINKY_ON_JIS] = KEYMAP_JP(
+       S(KC_ESC), S(KC_1), KC_FN3, S(KC_3), S(KC_4), S(KC_5), KC_FN3,  S(KC_6), S(KC_QUOT), S(KC_8), S(KC_9), S(KC_RO), S(KC_BSPC), S(KC_BSPC), S(KC_BSPC),
+       S(KC_TAB), S(KC_Q), S(KC_W), S(KC_E), S(KC_R), S(KC_T), S(KC_Y), S(KC_U), S(KC_I), S(KC_O), S(KC_P), S(KC_RBRC), S(KC_BSLS),
+       S(KC_LCTL),S(KC_A), S(KC_S), S(KC_D), S(KC_F), S(KC_G), S(KC_H), S(KC_J), S(KC_K), S(KC_L), S(KC_7), S(KC_2), S(KC_ENT), S(KC_ENT),
+       _______, S(KC_Z), S(KC_X), S(KC_C), S(KC_V), S(KC_B), S(KC_N), S(KC_M), S(KC_COMM), S(KC_DOT), S(KC_SLSH), S(KC_JYEN), S(KC_UP), S(KC_RSFT),
+       _______, _______, S(KC_LGUI), S(KC_LALT), S(KC_SCLN), S(KC_SPC), S(KC_EQL), S(KC_RSFT), S(KC_RALT), _______, S(KC_LEFT), S(KC_DOWN), S(KC_RGHT)
+     ),
   /* Layer Auxiliary: Extended version of HHKB Fn layer.
    *
    *  + Function keys
@@ -205,6 +253,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 enum fn_action_ids {
     HOLD_AUXILIARY_TAP_AUXILIARY = 0,
     HOLD_AUXILIARY_TAP_SELECTOR,
+    MOMENTARY_LAYER_AND_LEFT_SHIFT,
+    UNSHIFT,
     FIXED_RIGHT_PINKY,
     SELECT_KEYBOARD,
 };
@@ -213,9 +263,12 @@ const uint16_t PROGMEM fn_actions[] = {
     [0] = ACTION_FUNCTION_TAP(HOLD_AUXILIARY_TAP_AUXILIARY),
     [1] = ACTION_FUNCTION_TAP(HOLD_AUXILIARY_TAP_AUXILIARY),
     [2] = ACTION_FUNCTION_TAP(HOLD_AUXILIARY_TAP_SELECTOR),
+    [3] = ACTION_FUNCTION(UNSHIFT),
     [4] = ACTION_FUNCTION(FIXED_RIGHT_PINKY),
+    [5] = ACTION_FUNCTION_OPT(MOMENTARY_LAYER_AND_LEFT_SHIFT, SHIFT_FIXED_RIGHT_PINKY_ON_JIS),
     [6] = ACTION_FUNCTION_OPT(SELECT_KEYBOARD, FIXED_RIGHT_PINKY_ON_ASCII),
     [7] = ACTION_FUNCTION_OPT(SELECT_KEYBOARD, MOUSE),
+    [8] = ACTION_FUNCTION_OPT(SELECT_KEYBOARD, FIXED_RIGHT_PINKY_ON_JIS),
 };
 
 // Momentary swtich to layer ``hold'', toggles layer ``tap'' on tap.
@@ -286,6 +339,8 @@ void mod_us(const keyrecord_t * const record, uint8_t keycode) {
     }
 }
 
+static uint8_t unshift_count = 0;
+
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
     switch(id) {
         case HOLD_AUXILIARY_TAP_AUXILIARY:
@@ -305,6 +360,50 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
                     layer_on(SELECTOR);
                 }
             }
+            break;
+        case MOMENTARY_LAYER_AND_LEFT_SHIFT:
+            unshift_count = 0;
+            if(record->event.pressed) {
+                layer_on(opt);
+                register_mods(MOD_LSFT);
+            }else {
+                unregister_mods(MOD_LSFT);
+                layer_off(opt);
+            }
+            break;
+        case UNSHIFT:
+            if(record->event.pressed) {
+                del_mods(MOD_LSFT);
+                unshift_count += 1;
+                switch(keymap_key_to_keycode(REFERENCE, record->event.key)) {
+                    case KC_2:      // @
+                        add_key(KC_LBRC);
+                        break;
+                    case KC_6:      // ^
+                        add_key(KC_EQL);
+                        break;
+                    case KC_SCLN:   // :
+                        add_key(KC_QUOT);
+                        break;
+                }
+            } else {
+                unshift_count -= 1;
+                switch(keymap_key_to_keycode(REFERENCE, record->event.key)) {
+                    case KC_2:
+                        del_key(KC_LBRC);
+                        break;
+                    case KC_6:
+                        del_key(KC_EQL);
+                        break;
+                    case KC_SCLN:
+                        del_key(KC_QUOT);
+                        break;
+                }
+                if(unshift_count == 0) {
+                    add_mods(MOD_LSFT);
+                }
+            }
+            send_keyboard_report();
             break;
         case FIXED_RIGHT_PINKY:
             mod_us(record, keymap_key_to_keycode(REFERENCE, record->event.key));
