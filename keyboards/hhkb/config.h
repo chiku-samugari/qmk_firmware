@@ -24,8 +24,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VENDOR_ID       0xFEED
 #define PRODUCT_ID      0xCAFE
 #define DEVICE_VER      0x0104
-#define MANUFACTURER    q.m.k
-#define PRODUCT         HHKB mod
+#define MANUFACTURER    Topre Corporation
+#define PRODUCT         HHKB Professional
 #define DESCRIPTION     q.m.k keyboard firmware for HHKB
 
 /* key matrix size */
