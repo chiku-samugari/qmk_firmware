@@ -92,10 +92,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
-const macro_t *action_get_macro(keyrecord_t *record, uint8_t macro_id, uint8_t opt) {
-  return MACRO_NONE;
-}
-
 enum fn_action_ids {
     HOLD_AUXILIARY_TAP_AUXILIARY = 0,
 };
