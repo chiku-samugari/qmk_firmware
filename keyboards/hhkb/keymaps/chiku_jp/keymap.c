@@ -42,9 +42,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Layer BASE: Default Layer
      *
-     * Fn0: Activates AUXILIARY Layer on hold, toggles AUXILIARY layer
+     * Fn0: Activates MOUSE Layer on hold, toggles AUXILIARY layer
      *      on TAPPING_TOGGLE times tap.
-     * Fn1: same as Fn0
+     * Fn1: Activates AUXILIARY Layer on hold, toggles AUXILIARY layer
+     *      on TAPPING_TOGGLE times tap.
      * Fn2: Activates AUXILIARY Layer on hold, switches on SELECTOR
      *      layer on TAPPING_TOGGLE times tap. Beforehand, layer_state
      *      is cleared on first tap.
@@ -251,7 +252,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 enum fn_action_ids {
-    HOLD_AUXILIARY_TAP_AUXILIARY = 0,
+    HOLD_MOUSE_TAP_AUXILIARY = 0,
+    HOLD_AUXILIARY_TAP_AUXILIARY,
     HOLD_AUXILIARY_TAP_SELECTOR,
     MOMENTARY_LAYER_AND_LEFT_SHIFT,
     UNSHIFT,
@@ -260,7 +262,7 @@ enum fn_action_ids {
 };
 
 const uint16_t PROGMEM fn_actions[] = {
-    [0] = ACTION_FUNCTION_TAP(HOLD_AUXILIARY_TAP_AUXILIARY),
+    [0] = ACTION_FUNCTION_TAP(HOLD_MOUSE_TAP_AUXILIARY),
     [1] = ACTION_FUNCTION_TAP(HOLD_AUXILIARY_TAP_AUXILIARY),
     [2] = ACTION_FUNCTION_TAP(HOLD_AUXILIARY_TAP_SELECTOR),
     [3] = ACTION_FUNCTION(UNSHIFT),
@@ -343,6 +345,9 @@ static uint8_t unshift_count = 0;
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
     switch(id) {
+        case HOLD_MOUSE_TAP_AUXILIARY:
+            layer_tap_toggle_ab(record, MOUSE, AUXILIARY);
+            break;
         case HOLD_AUXILIARY_TAP_AUXILIARY:
             layer_tap_toggle_ab(record, AUXILIARY, AUXILIARY);
             break;
