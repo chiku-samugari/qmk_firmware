@@ -199,13 +199,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Layer RIGID_KEYBINDS_LCTRL
      *
-     * Fn11: it unregisters Left Control and issues Enter.
+     * Fn11: it unregisters Left Control and issues Enter if the pressed
+     * key is M,  or Backspace if the pressed key is H.
      * ,--------------------------------------------------------------------------.
      * |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
      * |--------------------------------------------------------------------------|
      * |      |    |    |    |    |    |    |    |    |    |    |    |    |       |
      * |------------------------------------------------------------------\       |
-     * |       |    |    |    |    |    |    |    |    |    |    |    |    |      |
+     * |       |    |    |    |    |    |Fn11|    |    |    |    |    |    |      |
      * |--------------------------------------------------------------------------|
      * |        |    |    |    |    |    |    |Fn11|    |    |    |     |    |    |
      * |--------------------------------------------------------------------------|
@@ -215,7 +216,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      [RIGID_KEYBINDS_LCTRL] = KEYMAP_JP(
        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+       _______, _______, _______, _______, _______, _______, KC_FN11, _______, _______, _______, _______, _______, _______, _______,
        _______, _______, _______, _______, _______, _______, _______, KC_FN11, _______, _______, _______, _______, _______, _______,
        _______, _______, _______, _______, _______,     _______     , _______, _______, _______, _______, _______, _______, _______
      ),
@@ -403,22 +404,31 @@ void fixed_right_pinky_on_ascii(const keyrecord_t * const record, uint8_t keycod
     }
 }
 
+static uint8_t uncontrol_count = 0;
 void rigid_keybinds(const keyrecord_t * const record, uint8_t keycode) {
-    // Unlike UNSHIFT case, counting uncontrol keys is not needed
-    // because there is only one uncontrol key for now.
     if(record->event.pressed) {
+        del_mods(MOD_LCTL);
+        uncontrol_count += 1;
         switch(keycode) {
             case KC_M:
-                del_mods(MOD_LCTL);
                 add_key(KC_ENT);
+                break;
+            case KC_H:
+                add_key(KC_BSPC);
                 break;
         }
     }else {
+        uncontrol_count -= 1;
         switch(keycode) {
             case KC_M:
-                add_mods(MOD_LCTL);
                 del_key(KC_ENT);
                 break;
+            case KC_H:
+                del_key(KC_BSPC);
+                break;
+        }
+        if(uncontrol_count == 0) {
+            add_mods(MOD_LCTL);
         }
     }
     send_keyboard_report();
@@ -503,6 +513,7 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
             }
             break;
         case MOMENTARY_LAYER_AND_LEFT_CTRL:
+            uncontrol_count = 0;
             if(record->event.pressed) {
                 layer_on(opt);
                 register_mods(MOD_LCTL);
