@@ -348,11 +348,10 @@ void layer_tap_toggle_ab(const keyrecord_t * const record, Layer hold, Layer tap
     }
 }
 
-static bool lshift = false;
-static uint8_t semicolon = 0;
-static uint8_t quote = 0;
-
 void mod_us(const keyrecord_t * const record, uint8_t keycode) {
+    static bool lshift = false;
+    static uint8_t semicolon = 0;
+    static uint8_t quote = 0;
     switch(keycode) {
         case KC_LSFT:
             if(record->event.pressed) {
