@@ -425,9 +425,9 @@ void rigid_keybinds(const keyrecord_t * const record, uint8_t keycode) {
     send_keyboard_report();
 }
 
-static uint8_t unshift_count = 0;
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
+    static uint8_t unshift_count = 0;
     switch(id) {
         case HOLD_MOUSE_TAP_AUXILIARY:
             layer_tap_toggle_ab(record, MOUSE, AUXILIARY);
