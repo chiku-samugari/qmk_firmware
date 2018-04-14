@@ -348,7 +348,7 @@ void layer_tap_toggle_ab(const keyrecord_t * const record, Layer hold, Layer tap
     }
 }
 
-void mod_us(const keyrecord_t * const record, uint8_t keycode) {
+void fixed_right_pinky_on_ascii(const keyrecord_t * const record, uint8_t keycode) {
     static bool lshift = false;
     static uint8_t semicolon = 0;
     static uint8_t quote = 0;
@@ -494,7 +494,7 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
             send_keyboard_report();
             break;
         case FIXED_RIGHT_PINKY:
-            mod_us(record, keymap_key_to_keycode(REFERENCE, record->event.key));
+            fixed_right_pinky_on_ascii(record, keymap_key_to_keycode(REFERENCE, record->event.key));
             break;
         case SELECT_KEYBOARD:
             if(record->event.pressed) {
