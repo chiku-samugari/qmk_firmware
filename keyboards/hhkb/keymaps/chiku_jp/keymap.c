@@ -11,6 +11,8 @@ enum layer_ids {
     FIXED_RIGHT_PINKY_ON_ASCII,
     FIXED_RIGHT_PINKY_ON_JIS,
     SHIFT_FIXED_RIGHT_PINKY_ON_JIS,
+    RIGID_KEYBINDS,
+    RIGID_KEYBINDS_LCTRL,
     AUXILIARY,
     MOUSE,
     REFERENCE,
@@ -77,11 +79,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *
    * Fn6: activates FIXED_RIGHT_PINKY_ON_ASCII and deactivates SELECTOR
    * Fn7: activated MOUSE and deactivates SELECTOR
-   * Fn8:activates FIXED_RIGHT_PINKY_ON_JIS and deactivates SELECTOR
+   * Fn8: activates FIXED_RIGHT_PINKY_ON_JIS and deactivates SELECTOR
+   * Fn9: activates RIGID_KEYBINDS and deactivates SELECTOR
    */
 
   [SELECTOR] = KEYMAP_JP(
-    _______,  KC_FN6,  KC_FN7, _______, _______, _______, _______, _______, _______, _______,  KC_FN8, _______, _______, _______, _______,
+    _______,  KC_FN6,  KC_FN7, _______, _______, _______, _______, _______, _______,  KC_FN9,  KC_FN8, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
@@ -162,6 +165,61 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        _______, S(KC_Z), S(KC_X), S(KC_C), S(KC_V), S(KC_B), S(KC_N), S(KC_M), S(KC_COMM), S(KC_DOT), S(KC_SLSH), S(KC_JYEN), S(KC_UP), S(KC_RSFT),
        _______, _______, S(KC_LGUI), S(KC_LALT), S(KC_SCLN), S(KC_SPC), S(KC_EQL), S(KC_RSFT), S(KC_RALT), _______, S(KC_LEFT), S(KC_DOWN), S(KC_RGHT)
      ),
+
+    /* Layer RIGID_KEYBINDS
+     *   LCtrl + M issues Enter. This layer is proposed to use Ctrl + M
+     *   as the Enter key even on the Editors that does not allow the
+     *   user to input Return characters without Enter keys. VS Code is
+     *   one of the examples.
+     *
+     * Fn10: Control emulating key. It registers Left Control bit on press,
+     * unregisters the bit on release. Simultaneously,
+     * RIGID_KEYBINDS_LCTRL layer is activated on press, and deactivated
+     * on release.
+     * ,--------------------------------------------------------------------------.
+     * |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+     * |--------------------------------------------------------------------------|
+     * |      |    |    |    |    |    |    |    |    |    |    |    |    |       |
+     * |------------------------------------------------------------------\       |
+     * | Fn10  |    |    |    |    |    |    |    |    |    |    |    |    |      |
+     * |--------------------------------------------------------------------------|
+     * |        |    |    |    |    |    |    |    |    |    |    |     |    |    |
+     * |--------------------------------------------------------------------------|
+     * |    | |    |    |    |    |          |    |    |    |    | |    |    |    |
+     * `--------------------------------------------------------------------------'
+     */
+
+     [RIGID_KEYBINDS] = KEYMAP_JP(
+       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+       KC_FN10, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+       _______, _______, _______, _______, _______,     _______     , _______, _______, _______, _______, _______, _______, _______
+     ),
+
+    /* Layer RIGID_KEYBINDS_LCTRL
+     *
+     * Fn11: it unregisters Left Control and issues Enter.
+     * ,--------------------------------------------------------------------------.
+     * |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+     * |--------------------------------------------------------------------------|
+     * |      |    |    |    |    |    |    |    |    |    |    |    |    |       |
+     * |------------------------------------------------------------------\       |
+     * |       |    |    |    |    |    |    |    |    |    |    |    |    |      |
+     * |--------------------------------------------------------------------------|
+     * |        |    |    |    |    |    |    |Fn11|    |    |    |     |    |    |
+     * |--------------------------------------------------------------------------|
+     * |    | |    |    |    |    |          |    |    |    |    | |    |    |    |
+     * `--------------------------------------------------------------------------'
+     */
+     [RIGID_KEYBINDS_LCTRL] = KEYMAP_JP(
+       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+       _______, _______, _______, _______, _______, _______, _______, KC_FN11, _______, _______, _______, _______, _______, _______,
+       _______, _______, _______, _______, _______,     _______     , _______, _______, _______, _______, _______, _______, _______
+     ),
+
   /* Layer Auxiliary: Extended version of HHKB Fn layer.
    *
    *  + Function keys
@@ -257,8 +315,10 @@ enum fn_action_ids {
     HOLD_AUXILIARY_TAP_SELECTOR,
     MOMENTARY_LAYER_AND_LEFT_SHIFT,
     UNSHIFT,
+    UNCONTROL,
     FIXED_RIGHT_PINKY,
     SELECT_KEYBOARD,
+    MOMENTARY_LAYER_AND_LEFT_CTRL,
 };
 
 const uint16_t PROGMEM fn_actions[] = {
@@ -271,6 +331,9 @@ const uint16_t PROGMEM fn_actions[] = {
     [6] = ACTION_FUNCTION_OPT(SELECT_KEYBOARD, FIXED_RIGHT_PINKY_ON_ASCII),
     [7] = ACTION_FUNCTION_OPT(SELECT_KEYBOARD, MOUSE),
     [8] = ACTION_FUNCTION_OPT(SELECT_KEYBOARD, FIXED_RIGHT_PINKY_ON_JIS),
+    [9] = ACTION_FUNCTION_OPT(SELECT_KEYBOARD, RIGID_KEYBINDS),
+    [10] = ACTION_FUNCTION_OPT(MOMENTARY_LAYER_AND_LEFT_CTRL, RIGID_KEYBINDS_LCTRL),
+    [11] = ACTION_FUNCTION(UNCONTROL),
 };
 
 // Momentary swtich to layer ``hold'', toggles layer ``tap'' on tap.
@@ -339,6 +402,27 @@ void mod_us(const keyrecord_t * const record, uint8_t keycode) {
             send_keyboard_report();
             break;
     }
+}
+
+void rigid_keybinds(const keyrecord_t * const record, uint8_t keycode) {
+    // Unlike UNSHIFT case, counting uncontrol keys is not needed
+    // because there is only one uncontrol key for now.
+    if(record->event.pressed) {
+        switch(keycode) {
+            case KC_M:
+                del_mods(MOD_LCTL);
+                add_key(KC_ENT);
+                break;
+        }
+    }else {
+        switch(keycode) {
+            case KC_M:
+                add_mods(MOD_LCTL);
+                del_key(KC_ENT);
+                break;
+        }
+    }
+    send_keyboard_report();
 }
 
 static uint8_t unshift_count = 0;
@@ -418,6 +502,18 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
                 layer_off(SELECTOR);
                 layer_on(opt);
             }
+            break;
+        case MOMENTARY_LAYER_AND_LEFT_CTRL:
+            if(record->event.pressed) {
+                layer_on(opt);
+                register_mods(MOD_LCTL);
+            }else {
+                unregister_mods(MOD_LCTL);
+                layer_off(opt);
+            }
+            break;
+        case UNCONTROL:
+            rigid_keybinds(record, keymap_key_to_keycode(REFERENCE, record->event.key));
             break;
     }
 }
