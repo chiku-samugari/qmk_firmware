@@ -13,6 +13,7 @@ enum layer_ids {
     SHIFT_FIXED_RIGHT_PINKY_ON_JIS,
     RIGID_KEYBINDS,
     RIGID_KEYBINDS_LCTRL,
+    FOURTY,
     AUXILIARY,
     MOUSE,
     REFERENCE,
@@ -61,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------------------------------------------------------------------------|
      * |L-Shift |  Z |  X |  C |  V |  B |  N |  M |  , |  . |  / |  \  | Up |RSft|
      * |--------------------------------------------------------------------------|
-     * | Fn0| | Fn1|LGUI|LAlt|LAlt|  Space   |  ` |  = |RAlt| Fn2| |Left|Down|Rght|
+     * | Fn0| | Fn1|LGUI|Fn12|LAlt|  Space   |  ` |  = |RAlt| Fn2| |Left|Down|Rght|
      * `--------------------------------------------------------------------------'
      */
 
@@ -70,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,    KC_Y,    KC_U,     KC_I,    KC_O,    KC_P, KC_LBRC, KC_RBRC,
     KC_LCTL,  KC_A,    KC_S,    KC_D,    KC_F,     KC_G,    KC_H,    KC_J,     KC_K,    KC_L, KC_SCLN, KC_QUOT,  KC_ENT,  KC_ENT,
     KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,     KC_B,    KC_N,    KC_M,  KC_COMM,  KC_DOT, KC_SLSH, KC_BSLS,   KC_UP, KC_RSFT,
-    KC_FN0, KC_FN1, KC_LGUI, KC_LALT, KC_LALT,         KC_SPC,     KC_GRV,   KC_EQL, KC_RALT,  KC_FN2, KC_LEFT, KC_DOWN, KC_RGHT
+    KC_FN0, KC_FN1, KC_LGUI, KC_FN12, KC_LALT,         KC_SPC,     KC_GRV,   KC_EQL, KC_RALT,  KC_FN2, KC_LEFT, KC_DOWN, KC_RGHT
   ),
 
   /* Layer SELECTOR:
@@ -221,6 +222,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        _______, _______, _______, _______, _______,     _______     , _______, _______, _______, _______, _______, _______, _______
      ),
 
+  /* Layer Fourty: 40% keybord symbols and numbers layer.
+   * ,--------------------------------------------------------------------------.
+   * |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
+   * |--------------------------------------------------------------------------|
+   * |      |    |    |    |    |    |    |  1 |  2 |  3 |  4 |  5 |    |       |
+   * |------------------------------------------------------------------\       |
+   * |       |    |    |  [ |  ] |    |    |  6 |  ( |  ) |  7 |  8 |    |      |
+   * |--------------------------------------------------------------------------|
+   * |        |    |    |    |    |    |    |  9 |    |    |    |     |    |    |
+   * |--------------------------------------------------------------------------|
+   * |    | |    |    |    |    |          |  0 |  - |    |    | |    |    |    |
+   * `--------------------------------------------------------------------------'
+   */
+   [FOURTY] = KEYMAP_JP(
+     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+     _______, _______, _______, _______, _______, _______, _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5, _______,
+     _______, _______, _______, KC_LBRC, KC_RBRC, _______, _______,    KC_6, KC_LPRN, KC_RPRN,    KC_7,    KC_8, _______, _______,
+     _______, _______, _______, _______, _______, _______, _______,    KC_9, _______, _______, _______, _______, _______, _______,
+     _______, _______, _______, _______, _______,     _______     ,    KC_0, KC_MINS, _______, _______, _______, _______, _______
+   ),
+
   /* Layer Auxiliary: Extended version of HHKB Fn layer.
    *
    *  + Function keys
@@ -335,6 +357,7 @@ const uint16_t PROGMEM fn_actions[] = {
     [9] = ACTION_FUNCTION_OPT(SELECT_KEYBOARD, RIGID_KEYBINDS),
     [10] = ACTION_FUNCTION_OPT(MOMENTARY_LAYER_AND_LEFT_CTRL, RIGID_KEYBINDS_LCTRL),
     [11] = ACTION_FUNCTION(UNCONTROL),
+    [12] = ACTION_LAYER_MOMENTARY(FOURTY),
 };
 
 // Momentary swtich to layer ``hold'', toggles layer ``tap'' on tap.
