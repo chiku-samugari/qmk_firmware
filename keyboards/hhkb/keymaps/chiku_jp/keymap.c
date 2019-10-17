@@ -13,7 +13,7 @@ enum layer_ids {
     SHIFT_FIXED_RIGHT_PINKY_ON_JIS,
     RIGID_KEYBINDS,
     RIGID_KEYBINDS_LCTRL,
-    FOURTY,
+    FOURTY_SHIFT_SYM,
     AUXILIARY,
     MOUSE,
     REFERENCE,
@@ -52,7 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * Fn2: Activates AUXILIARY Layer on hold, switches on SELECTOR
      *      layer on TAPPING_TOGGLE times tap. Beforehand, layer_state
      *      is cleared on first tap.
-     * Fn12: Activates Fourty Layer on hold.
+     * Fn12: Activates Fourty Shift Symbols Layer on hold.
      *
      * ,--------------------------------------------------------------------------.
      * |Esc |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 |  0 |  - |  = |BSpc|BSpc|
@@ -223,7 +223,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        _______, _______, _______, _______, _______,     _______     , _______, _______, _______, _______, _______, _______, _______
      ),
 
-  /* Layer Fourty: 40% keybord symbols and numbers layer.
+  /* Layer Fourty Shift Symbols: 40% keybord shift symbols and numbers
+   * layer. Some unshift symbols are also available for convenience.
+   *
    * ,--------------------------------------------------------------------------.
    * |    |    |    |    |    |    |    |    |    |    |    |    |    |    |    |
    * |--------------------------------------------------------------------------|
@@ -236,7 +238,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |    | |    |    |    |    |          |  0 |  - |    |    | |    |    |    |
    * `--------------------------------------------------------------------------'
    */
-   [FOURTY] = KEYMAP_JP(
+   [FOURTY_SHIFT_SYM] = KEYMAP_JP(
      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
      _______, _______, _______, _______, _______, _______, _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5, _______,
      _______, _______, _______, KC_LBRC, KC_RBRC, _______, _______,    KC_6, KC_LPRN, KC_RPRN,    KC_7,    KC_8, _______, _______,
@@ -358,7 +360,7 @@ const uint16_t PROGMEM fn_actions[] = {
     [9] = ACTION_FUNCTION_OPT(SELECT_KEYBOARD, RIGID_KEYBINDS),
     [10] = ACTION_FUNCTION_OPT(MOMENTARY_LAYER_AND_LEFT_CTRL, RIGID_KEYBINDS_LCTRL),
     [11] = ACTION_FUNCTION(UNCONTROL),
-    [12] = ACTION_LAYER_MOMENTARY(FOURTY),
+    [12] = ACTION_LAYER_MOMENTARY(FOURTY_SHIFT_SYM),
 };
 
 // Momentary swtich to layer ``hold'', toggles layer ``tap'' on tap.
