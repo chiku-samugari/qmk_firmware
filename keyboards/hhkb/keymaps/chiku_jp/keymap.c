@@ -13,6 +13,7 @@ enum layer_ids {
     SHIFT_FIXED_RIGHT_PINKY_ON_JIS,
     RIGID_KEYBINDS,
     RIGID_KEYBINDS_LCTRL,
+    FOURTY_NUM_SYM,
     FOURTY_SHIFT_SYM,
     AUXILIARY,
     MOUSE,
@@ -53,13 +54,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *      layer on TAPPING_TOGGLE times tap. Beforehand, layer_state
      *      is cleared on first tap.
      * Fn12: Activates Fourty Shift Symbols Layer on hold.
+     * LT(FOURTY_NUM_SYM, KC_QUOTE): Activates Fourty Numbers and
+     * Symbols Layer on hold, issues KC_QUOTE on tap.
      *
      * ,--------------------------------------------------------------------------.
      * |Esc |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 |  0 |  - |  = |BSpc|BSpc|
      * |--------------------------------------------------------------------------|
      * |Tab   |  Q |  W |  E |  R |  T |  Y |  U |  I |  O |  P |  [ |  ] |       |
      * |------------------------------------------------------------------\ Enter |
-     * |L-Ctrl |  A |  S |  D |  F |  G |  H |  J |  K |  L |  ; |  ' | Ent|      |
+     * |L-Ctrl |  A |  S |  D |  F |  G |  H |  J |  K |  L |  ; |Fn13| Ent|      |
      * |--------------------------------------------------------------------------|
      * |L-Shift |  Z |  X |  C |  V |  B |  N |  M |  , |  . |  / |  \  | Up |RSft|
      * |--------------------------------------------------------------------------|
@@ -70,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = KEYMAP_JP(
     KC_ESC,   KC_1,    KC_2,    KC_3,    KC_4,     KC_5,    KC_6,    KC_7,     KC_8,    KC_9,    KC_0, KC_MINS,  KC_EQL, KC_BSPC, KC_BSPC,
     KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,    KC_Y,    KC_U,     KC_I,    KC_O,    KC_P, KC_LBRC, KC_RBRC,
-    KC_LCTL,  KC_A,    KC_S,    KC_D,    KC_F,     KC_G,    KC_H,    KC_J,     KC_K,    KC_L, KC_SCLN, KC_QUOT,  KC_ENT,  KC_ENT,
+    KC_LCTL,  KC_A,    KC_S,    KC_D,    KC_F,     KC_G,    KC_H,    KC_J,     KC_K,    KC_L, KC_SCLN, LT(FOURTY_NUM_SYM, KC_QUOTE),  KC_ENT,  KC_ENT,
     KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,     KC_B,    KC_N,    KC_M,  KC_COMM,  KC_DOT, KC_SLSH, KC_BSLS,   KC_UP, KC_RSFT,
     KC_FN0, KC_FN1, KC_LGUI, KC_LALT, KC_FN12,         KC_SPC,     KC_GRV,   KC_EQL, KC_RALT,  KC_FN2, KC_LEFT, KC_DOWN, KC_RGHT
   ),
