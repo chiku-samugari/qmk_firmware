@@ -257,7 +257,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * ,--------------------------------------------------------------------------.
    * |Powr| F1 | F2 | F3 | F4 | F5 | F6 | F7 | F8 | F9 | F0 | F11| F12| Ins| Del|
    * |--------------------------------------------------------------------------|
-   * |Caps  |    |VoDw|VoUp|Mute|    |    |    |  ( |  ) |PrSc|ScLk|Paus|       |
+   * |      |    |VoDw|VoUp|Mute|    |    |    |  ( |  ) |PrSc|ScLk|Paus|       |
    * |------------------------------------------------------------------\ Enter |
    * |       |  ! |  @ |  # |  $ |  % |Left|Rght| Up| Down|  + |  * |    |      |
    * |--------------------------------------------------------------------------|
@@ -269,7 +269,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [AUXILIARY] = KEYMAP_JP(
     KC_PWR,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,  KC_INS,  KC_DEL,
-    KC_CAPS, _______, KC_VOLD, KC_VOLU, KC_MUTE, _______, _______, _______, KC_LPRN, KC_RPRN, KC_PSCR, KC_SLCK, KC_PAUS,
+    _______, _______, KC_VOLD, KC_VOLU, KC_MUTE, _______, _______, _______, KC_LPRN, KC_RPRN, KC_PSCR, KC_SLCK, KC_PAUS,
     _______, KC_EXLM, KC_AT,   KC_HASH,  KC_DLR, KC_PERC, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_ASTR, KC_PLUS, _______, KC_PENT,
     _______, _______, _______, _______, _______, _______, KC_CIRC, KC_AMPR, _______, _______, KC_UNDS, _______, _______, _______,
     _______, _______, _______, _______, _______,     _______     , _______, _______, _______, _______, _______, _______, _______
