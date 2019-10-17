@@ -52,6 +52,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * Fn2: Activates AUXILIARY Layer on hold, switches on SELECTOR
      *      layer on TAPPING_TOGGLE times tap. Beforehand, layer_state
      *      is cleared on first tap.
+     * Fn12: Activates Fourty Layer on hold.
      *
      * ,--------------------------------------------------------------------------.
      * |Esc |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 |  0 |  - |  = |BSpc|BSpc|
