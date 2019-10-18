@@ -35,7 +35,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `--------------------------------------------------------------------------'
      *
      * Keymap Template
-     * [] = KEYMAP_JP(
+     * [] = LAYOUT_JP(
      *   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
      *   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
      *   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
@@ -70,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `--------------------------------------------------------------------------'
      */
 
-  [BASE] = KEYMAP_JP(
+  [BASE] = LAYOUT_JP(
     KC_ESC,   KC_1,    KC_2,    KC_3,    KC_4,     KC_5,    KC_6,    KC_7,     KC_8,    KC_9,    KC_0, KC_MINS,  KC_EQL, KC_BSPC, KC_BSPC,
     KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,    KC_Y,    KC_U,     KC_I,    KC_O,    KC_P, KC_LBRC, KC_RBRC,
     KC_LCTL,  KC_A,    KC_S,    KC_D,    KC_F,     KC_G,    KC_H,    KC_J,     KC_K,    KC_L, KC_SCLN, LT(FOURTY_NUM_SYM, KC_QUOTE),  KC_ENT,  KC_ENT,
@@ -88,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * Fn9: activates RIGID_KEYBINDS and deactivates SELECTOR
    */
 
-  [SELECTOR] = KEYMAP_JP(
+  [SELECTOR] = LAYOUT_JP(
     _______,  KC_FN6,  KC_FN7, _______, _______, _______, _______, _______, _______,  KC_FN9,  KC_FN8, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
@@ -117,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `--------------------------------------------------------------------------'
    */
 
-  [FIXED_RIGHT_PINKY_ON_ASCII] = KEYMAP_JP(
+  [FIXED_RIGHT_PINKY_ON_ASCII] = LAYOUT_JP(
        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  KC_FN4,  KC_FN4, _______, _______,
@@ -149,7 +149,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `--------------------------------------------------------------------------'
    */
 
-  [FIXED_RIGHT_PINKY_ON_JIS] = KEYMAP_JP(
+  [FIXED_RIGHT_PINKY_ON_JIS] = LAYOUT_JP(
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_RBRC, KC_BSLS,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
@@ -163,7 +163,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *   keyboard.
    */
 
-     [SHIFT_FIXED_RIGHT_PINKY_ON_JIS] = KEYMAP_JP(
+     [SHIFT_FIXED_RIGHT_PINKY_ON_JIS] = LAYOUT_JP(
        S(KC_ESC), S(KC_1), KC_FN3, S(KC_3), S(KC_4), S(KC_5), KC_FN3,  S(KC_6), S(KC_QUOT), S(KC_8), S(KC_9), S(KC_RO), S(KC_BSPC), S(KC_BSPC), S(KC_BSPC),
        S(KC_TAB), S(KC_Q), S(KC_W), S(KC_E), S(KC_R), S(KC_T), S(KC_Y), S(KC_U), S(KC_I), S(KC_O), S(KC_P), S(KC_RBRC), S(KC_BSLS),
        S(KC_LCTL),S(KC_A), S(KC_S), S(KC_D), S(KC_F), S(KC_G), S(KC_H), S(KC_J), S(KC_K), S(KC_L), S(KC_7), S(KC_2), S(KC_ENT), S(KC_ENT),
@@ -194,7 +194,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `--------------------------------------------------------------------------'
      */
 
-     [RIGID_KEYBINDS] = KEYMAP_JP(
+     [RIGID_KEYBINDS] = LAYOUT_JP(
        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
        KC_FN10, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
@@ -218,7 +218,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |    | |    |    |    |    |          |    |    |    |    | |    |    |    |
      * `--------------------------------------------------------------------------'
      */
-     [RIGID_KEYBINDS_LCTRL] = KEYMAP_JP(
+     [RIGID_KEYBINDS_LCTRL] = LAYOUT_JP(
        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
        _______, _______, _______, _______, _______, _______, KC_FN11, _______, _______, _______, _______, _______, _______, _______,
@@ -241,7 +241,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `--------------------------------------------------------------------------'
    */
 
-   [FOURTY_NUM_SYM] = KEYMAP_JP(
+   [FOURTY_NUM_SYM] = LAYOUT_JP(
      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
       KC_ESC, _______, KC_GRV,   KC_EQL, KC_MINS, _______, _______, _______, _______, _______, _______,  KC_DEL, _______,
      _______, KC_BSLS, KC_QUOT, KC_LBRC, KC_RBRC,  KC_GRV,  KC_EQL, KC_SCLN,    KC_9,    KC_0, KC_MINS, _______, _______, _______,
@@ -265,7 +265,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `--------------------------------------------------------------------------'
    */
 
-   [FOURTY_SHIFT_SYM] = KEYMAP_JP(
+   [FOURTY_SHIFT_SYM] = LAYOUT_JP(
      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
      _______, _______, _______, _______, _______, _______, _______, KC_TILD, KC_PLUS,  KC_UNDS,  KC_ESC, KC_BSPC, _______,
      _______, KC_PIPE, KC_DQUO, KC_LCBR, KC_RCBR,  KC_GRV,  KC_EQL, KC_COLN, KC_LPRN, KC_RPRN, KC_MINS,  KC_ENT, _______, _______,
@@ -294,7 +294,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * `--------------------------------------------------------------------------'
    */
 
-  [AUXILIARY] = KEYMAP_JP(
+  [AUXILIARY] = LAYOUT_JP(
     KC_PWR,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,  KC_INS,  KC_DEL,
     _______, _______, KC_VOLD, KC_VOLU, KC_MUTE, _______, _______, _______, KC_LPRN, KC_RPRN, KC_PSCR, KC_SLCK, KC_PAUS,
     _______, KC_EXLM, KC_AT,   KC_HASH,  KC_DLR, KC_PERC, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_ASTR, KC_PLUS, _______, KC_PENT,
@@ -316,7 +316,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `--------------------------------------------------------------------------'
      */
 
-     [MOUSE] = KEYMAP_JP(
+     [MOUSE] = LAYOUT_JP(
        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
        _______, _______, _______, _______, _______, _______, KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, _______, KC_MS_U, _______,
        _______, KC_BTN5, KC_BTN4, KC_BTN3, KC_BTN2, _______, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_MS_L, KC_MS_R, _______, _______,
@@ -353,7 +353,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `--------------------------------------------------------------------------'
      */
 
-  [REFERENCE] = KEYMAP_JP(
+  [REFERENCE] = LAYOUT_JP(
     KC_ESC,   KC_1,    KC_2,    KC_3,    KC_4,     KC_5,    KC_6,    KC_7,     KC_8,    KC_9,    KC_0, KC_MINS, KC_EQL, KC_JYEN, KC_BSPC,
     KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,    KC_Y,    KC_U,     KC_I,    KC_O,    KC_P, KC_LBRC, KC_RBRC,
     KC_LCTL,  KC_A,    KC_S,    KC_D,    KC_F,     KC_G,    KC_H,    KC_J,     KC_K,    KC_L, KC_SCLN, KC_QUOT, KC_BSLS,  KC_ENT,
