@@ -47,10 +47,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [SHIFT_NUM_AND_SYM] = LAYOUT_arrow_command(
-     KC_TAB, _______, _______, _______, _______, _______, _______, KC_TILD, KC_PLUS, KC_UNDS,  KC_ESC, KC_BSPC,
+     KC_TAB,    KC_1,    KC_0, _______, _______, _______, _______, KC_TILD, KC_PLUS, KC_UNDS,    KC_0, KC_BSPC,
     _______, KC_PIPE, KC_DQUO, KC_LCBR, KC_RCBR, KC_GRV,   KC_EQL, KC_COLN, KC_LPRN, KC_RPRN, KC_MINS,  KC_ENT,
-    _______, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC, KC_AMPR, KC_CIRC, KC_ASTR, _______,   KC_UP, KC_RSFT,
-
+    _______, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC, KC_AMPR, KC_CIRC, KC_ASTR,    KC_0,   KC_UP, KC_RSFT,
     _______, _______, _______, _______,          _______, KC_PLUS,          _______, _______, _______, _______
   ),
 
