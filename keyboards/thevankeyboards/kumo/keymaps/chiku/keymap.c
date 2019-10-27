@@ -50,14 +50,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_TAB,    KC_1,    KC_0, _______, _______, _______, _______, KC_TILD, KC_PLUS, KC_UNDS,    KC_0, KC_BSPC,
     _______, KC_PIPE, KC_DQUO, KC_LCBR, KC_RCBR, KC_GRV,   KC_EQL, KC_COLN, KC_LPRN, KC_RPRN, KC_MINS,  KC_ENT,
     _______, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC, KC_AMPR, KC_CIRC, KC_ASTR,    KC_0,   KC_UP, KC_RSFT,
-    _______, _______, _______, _______,          _______, KC_PLUS,          _______, _______, _______, _______
+    _______, _______, _______, _______,          _______, KC_PLUS,          _______, KC_LEFT, KC_DOWN, KC_RGHT
   ),
 
   [AUXILIARY] = LAYOUT_arrow_command(
       RESET, _______, KC_VOLD, KC_VOLU, KC_MUTE, _______,   KC_F9,  KC_F10,  KC_F11,  KC_F12, KC_PSCR,  KC_DEL,
     _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______,  KC_ENT,
     _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8, _______,   KC_UP, _______,
-    _______, _______, _______, _______,          _______, _______,          _______, _______, _______, _______
+    _______, _______, _______, _______,          _______, _______,          _______, KC_LEFT, KC_DOWN, KC_RGHT
   ),
 
   [MOUSE] = LAYOUT_arrow_command(
