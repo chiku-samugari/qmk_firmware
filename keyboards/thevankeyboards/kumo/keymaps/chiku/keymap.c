@@ -28,7 +28,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_ESC, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
     KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_BSLS,
-    MO(MOUSE), MO(AUXILIARY), KC_FN0, MO(SHIFT_NUM_AND_SYM),    KC_SPC,  LT(NUM_AND_SYM, KC_GRAVE),    KC_EQL, KC_BSPC, KC_0, KC_ENT
+    MO(MOUSE), MO(AUXILIARY), KC_FN0, MO(SHIFT_NUM_AND_SYM),    KC_SPC,  LT(NUM_AND_SYM, KC_GRAVE), KC_EQL, KC_LEFT, KC_UP, KC_RGHT
   ),
 
   /* In oreder to use Alt+Tab */
@@ -40,24 +40,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [NUM_AND_SYM] = LAYOUT_arrow_command(
-     KC_TAB, _______,  KC_GRV,  KC_EQL, KC_MINS, _______, _______, _______, _______, _______, _______,  KC_DEL,
-    _______, KC_BSLS, KC_QUOT, KC_LBRC, KC_RBRC,  KC_GRV,  KC_EQL, KC_SCLN,    KC_9,    KC_0, KC_MINS, _______,
-    _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8, _______, _______, _______,
+     KC_TAB,    KC_1,    KC_2,    KC_3,    KC_4, _______, _______,    KC_7,    KC_8, KC_MINS, _______, KC_BSPC,
+    _______, _______, _______,    KC_0, KC_LBRC,    KC_5,    KC_6, KC_RBRC,    KC_9,    KC_0, KC_MINS,  KC_ENT,
+    _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8, _______,   KC_UP,  KC_DEL,
     _______, _______, _______, _______,          _______, _______,          _______, _______, _______, _______
   ),
 
   [SHIFT_NUM_AND_SYM] = LAYOUT_arrow_command(
-     KC_TAB,    KC_1,    KC_0, _______, _______, _______, _______, KC_TILD, KC_PLUS, KC_UNDS,    KC_0, KC_BSPC,
-    _______, KC_PIPE, KC_DQUO, KC_LCBR, KC_RCBR, KC_GRV,   KC_EQL, KC_COLN, KC_LPRN, KC_RPRN, KC_MINS,  KC_ENT,
-    _______, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC, KC_AMPR, KC_CIRC, KC_ASTR,    KC_0,   KC_UP, KC_RSFT,
-    _______, _______, _______, _______,          _______, KC_PLUS,          _______, KC_LEFT, KC_DOWN, KC_RGHT
+     KC_TAB, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, _______, _______, KC_AMPR, KC_ASTR, KC_UNDS,    KC_0, KC_BSPC,
+    _______, _______, _______,    KC_0, KC_LCBR, KC_PERC, KC_CIRC, KC_RCBR, KC_LPRN, KC_RPRN, KC_MINS,  KC_ENT,
+    _______, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR,    KC_0,   KC_UP,  KC_DEL,
+    _______, _______, _______, _______,          _______, KC_TILD,          KC_PLUS, _______, _______, _______
   ),
 
   [AUXILIARY] = LAYOUT_arrow_command(
-      RESET, _______, KC_VOLD, KC_VOLU, KC_MUTE, _______,   KC_F9,  KC_F10,  KC_F11,  KC_F12, KC_PSCR,  KC_DEL,
+      RESET, _______, KC_VOLD, KC_VOLU, KC_MUTE, _______,   KC_F9,  KC_F10,  KC_F11,  KC_F12, KC_PSCR, KC_BSPC,
     _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______,  KC_ENT,
-    _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8, _______,   KC_UP, _______,
-    _______, _______, _______, _______,          _______, _______,          _______, KC_LEFT, KC_DOWN, KC_RGHT
+    _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8, _______,   KC_UP,  KC_DEL,
+    _______, _______, _______, _______,          _______, _______,          _______, _______, _______, _______
   ),
 
   [MOUSE] = LAYOUT_arrow_command(
