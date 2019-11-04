@@ -324,7 +324,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        _______, _______, _______, _______, _______,     KC_BTN1     , _______, _______, _______, _______, KC_MS_L, KC_MS_D, KC_MS_R
      ),
 
-    /* Layer REFERENCE: A utility layer to locate which of phisical key
+    /* Layer REFERENCE: An utility layer to locate which of phisical key
      * was actually operated. We can use keymap_key_to_keycode function
      * offered by Q.M.K to locate the phisical key because all the keys
      * of this layer issues unique keycode. It is quite convenient to
