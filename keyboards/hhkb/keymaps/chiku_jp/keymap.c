@@ -54,8 +54,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *      layer on TAPPING_TOGGLE times tap. Beforehand, layer_state
      *      is cleared on first tap.
      * Fn12: Activates Fourty Shift Symbols Layer on hold.
-     * LT(FOURTY_NUM_SYM, KC_GRAVE): Activates Fourty Numbers and
-     * Symbols Layer on hold, issues KC_GRAVE on tap.
      *
      * ,--------------------------------------------------------------------------.
      * |Esc |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 |  0 |  - |  = |BSpc|BSpc|
@@ -66,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------------------------------------------------------------------------|
      * |L-Shift |  Z |  X |  C |  V |  B |  N |  M |  , |  . |  / |  \  | Up |RSft|
      * |--------------------------------------------------------------------------|
-     * | Fn0| | Fn1|LGUI|Fn12|LAlt|  Space   |`/40|  = |RAlt| Fn2| |Left|Down|Rght|
+     * | Fn0| | Fn1|LGUI|LAlt|Fn12|  Space   | `  |  = |RAlt| Fn2| |Left|Down|Rght|
      * `--------------------------------------------------------------------------'
      */
 
@@ -75,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,   KC_Q,    KC_W,    KC_E,    KC_R,     KC_T,    KC_Y,    KC_U,     KC_I,    KC_O,    KC_P, KC_LBRC, KC_RBRC,
     KC_LCTL,  KC_A,    KC_S,    KC_D,    KC_F,     KC_G,    KC_H,    KC_J,     KC_K,    KC_L, KC_SCLN, KC_QUOT, KC_ENT,  KC_ENT,
     KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,     KC_B,    KC_N,    KC_M,  KC_COMM,  KC_DOT, KC_SLSH, KC_BSLS,   KC_UP, KC_RSFT,
-    KC_FN0, KC_FN1, KC_LGUI, KC_FN12, KC_LALT,         KC_SPC,     LT(FOURTY_NUM_SYM, KC_GRAVE), KC_EQL, KC_RALT,  KC_FN2, KC_LEFT, KC_DOWN, KC_RGHT
+    KC_FN0, KC_FN1, KC_LGUI, KC_LALT, KC_FN12,         KC_SPC,     KC_GRV, KC_EQL, KC_RALT,  KC_FN2, KC_LEFT, KC_DOWN, KC_RGHT
   ),
 
   /* Layer SELECTOR:
