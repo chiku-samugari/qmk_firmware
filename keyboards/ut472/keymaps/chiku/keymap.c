@@ -40,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |-------------------------------------------------------------------------+
    * | Shift |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  |  \  |
    * |-------------------------------------------------------------------------+
-   * |MOUSE| AUX | Gui | SYM | Fn0  |   Space   |`/NUM |  =  | Left| Down|Right|
+   * |MOUSE| AUX | Gui | Fn0 | SYM  |   Space   |  `   |  =  | Left| Down|Right|
    * `-------------------------------------------------------------------------'
    */
 
@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_ESC,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
   KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_BSLS,
-  MO(MOUSE), MO(AUXILIARY), KC_LGUI, MO(SHIFT_NUM_AND_SYM), KC_FN0, KC_SPC,  LT(NUM_AND_SYM, KC_GRAVE), KC_EQL, KC_LEFT, KC_DOWN, KC_RGHT
+  MO(NUM_AND_SYM), MO(AUXILIARY), KC_LGUI, KC_FN0, MO(SHIFT_NUM_AND_SYM), KC_SPC, KC_GRV, KC_EQL, KC_LEFT, KC_DOWN, KC_RGHT
 ),
 
   /* Corner Layer: In oreder to use ALT+Tab combination.
