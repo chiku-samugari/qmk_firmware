@@ -90,21 +90,21 @@ k  * |       |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |     | Up  |Delet|
 
   /* Shift Symbols Layer
    * ,-------------------------------------------------------------------------.
-   * | Tab  |  !  |  @  |  #  |  $  |     |     |  &  |  *  |  _  |  0 |BackSpc|
+   * | Tab  |  !  |  @  |  #  |  $  |  [  |  ]  |  &  |  *  |  -  |  0 |BackSpc|
    * |-------------------------------------------------------------------------+
-   * |      |     |     |  0  |  {  |  %  |  ^  |  }  |  (  |  ) |  -   | Enter|
+   * | BkSp |     |  0  |  1  |  {  |  %  |  ^  |  }  |  (  |  ) |  _   | Enter|
    * |-------------------------------------------------------------------------+
-   * |       |  !  |  @  |  #  |  $  |  %  |  ^  |  &  |  *  |  0  | Up  |Delet|
+   * |       |  2  |  3  |  4  |  5  |     |  6  |  7  |  8  |  9  | Up  |Delet|
    * |-------------------------------------------------------------------------+
-   * |     |     |     |     |      |          |   ~   |  +  |     |     |     |
+   * |MO(M)|     |     |     |      |          |   [   |  ]  |     |     |     |
    * `-------------------------------------------------------------------------'
    */
 
 [SHIFT_NUM_AND_SYM] = LAYOUT(
-  KC_TAB,  KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, _______, _______, KC_AMPR, KC_ASTR, KC_UNDS,    KC_0, KC_BSPC,
-  _______, _______, _______,    KC_0, KC_LCBR, KC_PERC, KC_CIRC, KC_RCBR, KC_LPRN, KC_RPRN, KC_MINS,  KC_ENT,
-  _______, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR,    KC_0,   KC_UP,  KC_DEL,
-  _______, _______, _______, _______, _______,     _______,      KC_TILD, KC_PLUS, _______, _______, _______
+  KC_TAB,  KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_LBRC, KC_RBRC, KC_AMPR, KC_ASTR, KC_MINS,   KC_0, KC_BSPC,
+  KC_BSPC, _______,    KC_0,    KC_1, KC_LCBR, KC_PERC, KC_CIRC, KC_RCBR, KC_LPRN, KC_RPRN, KC_UNDS,  KC_ENT,
+  _______,    KC_2,    KC_3,    KC_4,    KC_5, _______,    KC_6,    KC_7,    KC_8,    KC_9,   KC_UP,  KC_DEL,
+  MO(MOUSE), _______, _______, _______, _______,     _______,      KC_LBRC, KC_RBRC, _______, _______, _______
 ),
 
   /* Auxiliary Layer
