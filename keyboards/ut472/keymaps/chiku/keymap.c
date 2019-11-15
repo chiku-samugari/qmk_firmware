@@ -71,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Number and Symbols Layer
    * ,-------------------------------------------------------------------------.
-   * | Tab  |  1  |  2  |  3  |  4  |     |  7  |  8  |  -  |     |    |BackSpc|
+   * | Tab  |  1  |  2  |  3  |  4  |     |  7  |  8  |     |  -  |    |BackSpc|
    * |-------------------------------------------------------------------------+
    * |      |     |  0  |  1  |  [  |  5  |  6  |  ]  |  9  |  0 |  -   | Enter|
    * |-------------------------------------------------------------------------+
@@ -82,7 +82,7 @@ k  * |       |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  | Up  |Delet|
    */
 
 [NUM_AND_SYM] = LAYOUT(
-   KC_TAB,    KC_1,    KC_2,    KC_3,    KC_4, _______,    KC_7,    KC_8, KC_MINS, _______, _______, KC_BSPC,
+   KC_TAB,    KC_1,    KC_2,    KC_3,    KC_4, _______,    KC_7,    KC_8, _______, KC_MINS, _______, KC_BSPC,
   _______, _______,    KC_0,    KC_1, KC_LBRC,    KC_5,    KC_6, KC_RBRC,    KC_9,    KC_0, KC_MINS,  KC_ENT,
   _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,   KC_UP,  KC_DEL,
   _______, _______, _______, _______, _______,     _______,      _______, _______, _______, _______, _______
@@ -90,7 +90,7 @@ k  * |       |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  | Up  |Delet|
 
   /* Shift Symbols Layer
    * ,-------------------------------------------------------------------------.
-   * | Tab  |  !  |  @  |  #  |  $  |  [  |  &  |  *  |  _  |  0  |  ] |BackSpc|
+   * | Tab  |  !  |  @  |  #  |  $  |  [  |  &  |  *  |  0  |  _  |  ] |BackSpc|
    * |-------------------------------------------------------------------------+
    * |      |     |  0  |  1  |  {  |  %  |  ^  |  }  |  (  |  ) |  -   | Enter|
    * |-------------------------------------------------------------------------+
@@ -101,7 +101,7 @@ k  * |       |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  | Up  |Delet|
    */
 
 [SHIFT_NUM_AND_SYM] = LAYOUT(
-  KC_TAB,  KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_LBRC, KC_AMPR, KC_ASTR, KC_UNDS,    KC_0, KC_RBRC, KC_BSPC,
+  KC_TAB,  KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_LBRC, KC_AMPR, KC_ASTR,    KC_0, KC_UNDS, KC_RBRC, KC_BSPC,
   _______, _______,    KC_0,    KC_1, KC_LCBR, KC_PERC, KC_CIRC, KC_RCBR, KC_LPRN, KC_RPRN, KC_MINS,  KC_ENT,
   _______, _______,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,   KC_UP,  KC_DEL,
   MO(MOUSE), _______, _______, _______, _______,     _______,      KC_LBRC, KC_RBRC, _______, _______, _______
